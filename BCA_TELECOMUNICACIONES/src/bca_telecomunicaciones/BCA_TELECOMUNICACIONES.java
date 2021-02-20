@@ -4,7 +4,7 @@ public class BCA_TELECOMUNICACIONES {
     public static void main(String[] args) {
         System.out.println("juasjuas");
         System.out.println("Henrro gai");
-        System.out.println("Ole esta piola");
+        System.out.println("Ole no esta piola");
     }
  
 }
