@@ -15,6 +15,6 @@ public class BCA_TELECOMUNICACIONES {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-System.out.println("xDaaaa");    }
+        System.out.println("juasjuas");    }
     
 }
