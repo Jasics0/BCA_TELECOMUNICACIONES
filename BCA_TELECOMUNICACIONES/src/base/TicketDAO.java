@@ -12,7 +12,7 @@ public class TicketDAO extends Database {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         insertar("INSERT INTO Tickets VALUES('" + ticket.getCodigo() + "','" + df.format(ticket.getFecha_inicial())
                 + "',null,'" + ticket.getCedula_cliente() + "','" + ticket.getTipo() + "','"
-                + ticket.getNotas_problema() + "','" + ticket.getNotas_solucion() + "'," + 1 + ","
+                + ticket.getNotas_problema() + "',null," + 1 + ","
                 + ticket.getCalidad_servicio() + ");");
     }
 
@@ -27,12 +27,13 @@ public class TicketDAO extends Database {
     }
 
     public void editarTicket(String codigo, Ticket ticket) {
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         int estado = (ticket.getEstado()) ? 1 : 0;
-        insertar("UPDATE Tickets SET (fecha_inicial='" + ticket.getFecha_inicial() + "',fecha_final='"
-                + ticket.getFecha_final() + "',cedula_cliente='" + ticket.getCedula_cliente() + "',tipo='"
+        insertar("UPDATE Tickets SET fecha_inicial='" + df.format(ticket.getFecha_inicial()) + "',fecha_final='"
+                + df.format(ticket.getFecha_final()) + "',cedula_cliente='" + ticket.getCedula_cliente() + "',tipo='"
                 + ticket.getTipo() + "',notas_problema='" + ticket.getNotas_problema() + "', notas_solucion='"
                 + ticket.getNotas_solucion() + "',estado=" + estado + ", calidad_servicio="
-                + ticket.getCalidad_servicio() + ") WHERE(codigo_ticket='" + codigo + "');");
+                + ticket.getCalidad_servicio() + " WHERE(codigo_ticket='" + codigo + "');");
     }
 
     public ResultSet consultarTickets() {
