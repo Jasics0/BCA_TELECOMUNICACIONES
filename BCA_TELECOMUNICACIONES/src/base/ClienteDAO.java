@@ -6,8 +6,8 @@ import entidades.Cliente;
 
 public class ClienteDAO extends Database{
     
-    public void insertarCliente(Cliente cliente){
-        insertar("INSERT INTO Clientes VALUES('"+cliente.getCedula()+"','"+cliente.getNombre()+"');");
+    public void insertarCliente(String cedula){
+        insertar("INSERT INTO Clientes VALUES('"+cedula+"','"+cliente.getNombre()+"');");
     }
 
     public ResultSet consultarClientes(Cliente cliente){
