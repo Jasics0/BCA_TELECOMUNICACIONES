@@ -18,7 +18,9 @@ public class Ticket {
 
     public Ticket(Date fecha_inicial, Date fecha_final, String cedula_cliente, String tipo, String notas_problema,
             String notas_solucion, boolean estado, int calidad_servicio) throws SQLException {
-        this.codigo = "T"+new TicketDAO().numeroTickets();
+        TicketDAO to = new TicketDAO();
+        this.codigo = "T" + to.numeroTickets();
+        to.cerrarConexion();
         this.fecha_inicial = fecha_inicial;
         this.fecha_final = fecha_final;
         this.cedula_cliente = cedula_cliente;
@@ -28,7 +30,6 @@ public class Ticket {
         this.estado = estado;
         this.calidad_servicio = calidad_servicio;
     }
-
 
     public String getCodigo() {
         return this.codigo;

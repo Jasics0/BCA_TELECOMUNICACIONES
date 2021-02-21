@@ -38,7 +38,8 @@ public class ticketsActivos extends javax.swing.JFrame {
         model.addColumn("Estado");
         
         jTable1.setModel(model);
-        ResultSet rs = new TicketDAO().consultarTicketsActivos();
+        TicketDAO to= new TicketDAO();
+        ResultSet rs = to.consultarTicketsActivos();
         String[] dato = new String[5];
     
         try {
