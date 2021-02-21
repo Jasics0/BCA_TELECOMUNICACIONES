@@ -1,5 +1,9 @@
 package base;
 
-public class TicketDao {
+public class TicketDao extends Database{
+    
+
+
+
     
 }
