@@ -30,7 +30,8 @@ public class ticketsActivos extends javax.swing.JFrame {
         model.addColumn("Estado");
         
         jTable1.setModel(model);
-        ResultSet rs = new TicketDAO().consultarTicketsActivos();
+        TicketDAO to= new TicketDAO();
+        ResultSet rs = to.consultarTicketsActivos();
         String[] dato = new String[5];
     
         try {
@@ -42,7 +43,7 @@ public class ticketsActivos extends javax.swing.JFrame {
                 dato[4] = rs.getString(8);
                 model.addRow(dato);
             }
-            
+            to.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }   
