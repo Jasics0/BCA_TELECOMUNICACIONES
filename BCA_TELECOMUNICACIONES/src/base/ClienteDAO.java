@@ -20,7 +20,7 @@ public class ClienteDAO extends Database {
     }
 
     public int numeroClientes() throws SQLException {
-        ResultSet num=consulta("SELECT COUNT(*) FROM Clientes;");
+        ResultSet num=consulta("SELECT COUNT(cedula) FROM Clientes;");
         num.next();
         return num.getInt(1);
     }
