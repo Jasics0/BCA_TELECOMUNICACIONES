@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 
 import entidades.Ticket;
 
-public class TicketDao extends Database{
+public class TicketDAO extends Database{
     
     public void insertarTicket(Ticket ticket){
         SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd");

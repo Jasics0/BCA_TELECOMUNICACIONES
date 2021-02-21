@@ -6,6 +6,8 @@
 package bca_telecomunicaciones;
 
 import base.Database;
+import base.TicketDAO;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,9 +38,9 @@ public class ticketsActivos extends javax.swing.JFrame {
         model.addColumn("Estado");
         
         jTable1.setModel(model);
-        ResultSet rs = con.consulta("SELECT * FROM sql10393822.Tickets WHERE estado = 1;");
+        ResultSet rs = new TicketDAO().consultarTicketsActivos();
         String[] dato = new String[5];
-      
+    
         try {
             while (rs.next()) {
                 dato[0] = rs.getString(1);
