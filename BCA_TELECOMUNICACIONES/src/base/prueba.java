@@ -8,6 +8,8 @@ package base;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import entidades.Cliente;
+
 /**
  *
  * @author henry
@@ -15,16 +17,20 @@ import java.sql.SQLException;
 public class prueba {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Database xd = new Database();
-        if (xd != null) {
-            System.out.println("SI sirve xdxd");
-        } else {
-            System.out.println("Sutri djjdsj");
-        }
-        ResultSet rs=xd.consulta("SELECT * FROM sql10393822.Clientes;");
-        while (rs.next()) {
-            System.out.print("Cedula: "+rs.getString(1)+" ");
-            System.out.println("Nombre: "+rs.getString(2));
+
+        Cliente jaja= new Cliente("123","Yasbleidy");
+
+        ClienteDAO c= new ClienteDAO();
+
+        c.insertarCliente(jaja);
+
+        ResultSet cliente_consulta= c.consultarClientes(jaja);
+        cliente_consulta.next();
+        System.out.println("Se encontró este gai:"+cliente_consulta.getString(2));
+        cliente_consulta= c.consultarClientes();
+        System.out.println("CLIENTES EN LA TABLA: ");
+        while(cliente_consulta.next()){
+            System.out.println("Cedula: "+cliente_consulta.getString(1)+" Nombre: "+cliente_consulta.getString(2));
         }
     }
 

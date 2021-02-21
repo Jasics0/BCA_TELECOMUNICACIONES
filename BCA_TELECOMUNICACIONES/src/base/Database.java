@@ -20,18 +20,19 @@ public class Database {
 
     static Connection con = null;
 
-    public Database(){
-      conexion();
+    public Database() {
+        conexion();
     }
 
-    private static void conexion(){
-    try {
+    private static void conexion() {
+        try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com/sql10393822", "sql10393822", "Tu6iB9qjQb");
+            con = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com/sql10393822", "sql10393822",
+                    "Tu6iB9qjQb");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-        }}
-
+        }
+    }
 
     public ResultSet consulta(String Consulta) {
         ResultSet rs = null;
@@ -44,7 +45,7 @@ public class Database {
         return rs;
     }
 
-      public void insertar(String Consulta) {
+    public void insertar(String Consulta) {
         try {
             Statement ps = con.createStatement();
             ps.executeUpdate(Consulta);
@@ -53,5 +54,6 @@ public class Database {
         }
     }
 
+    
 
 }
