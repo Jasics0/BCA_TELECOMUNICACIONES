@@ -25,7 +25,7 @@ public class TicketDAO extends Database{
     }
 
     public ResultSet consultarTickets() {
-        return consulta("SELECT * FROM Tickets;");
+        return consulta("SELECT codigo_ticket,cedula_cliente,fecha_inicial,tipo,estado FROM Tickets;");
     }
 
     public ResultSet consultarTicketsActivos() {
@@ -34,7 +34,7 @@ public class TicketDAO extends Database{
 
 
     public int numeroTickets() throws SQLException {
-        ResultSet num=consulta("SELECT COUNT(*) FROM Tickets;");
+        ResultSet num=consulta("SELECT COUNT(codigo_ticket) FROM Tickets;");
         num.next();
         return num.getInt(1);
     }

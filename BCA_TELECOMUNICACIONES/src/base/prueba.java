@@ -24,11 +24,11 @@ public class prueba {
     public static void main(String[] args) {
         ClienteDAO cdb = new ClienteDAO();
         try {
-            System.out.println(cdb.numeroClientes());
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+			System.out.println(cdb.numeroClientes());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
   }
 
 }
