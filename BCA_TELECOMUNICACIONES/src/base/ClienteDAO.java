@@ -25,4 +25,8 @@ public class ClienteDAO extends Database {
         return num.getInt(1);
     }
 
+    public void editarCliente(String cedula,Cliente cliente){
+        insertar("UPDATE Clientes SET cedula='"+cliente.getCedula()+"',nombre= '"+cliente.getNombre()+"' WHERE(cedula='"+cedula+"');");
+    }
+
 }
