@@ -20,7 +20,6 @@ public class Ticket {
             String notas_solucion, boolean estado, int calidad_servicio) throws SQLException {
         TicketDAO to = new TicketDAO();
         this.codigo = "T" + to.numeroTickets();
-        to.cerrarConexion();
         this.fecha_inicial = fecha_inicial;
         this.fecha_final = fecha_final;
         this.cedula_cliente = cedula_cliente;
@@ -106,4 +105,11 @@ public class Ticket {
     public void setCalidad_servicio(int calidad_servicio) {
         this.calidad_servicio = calidad_servicio;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" + "codigo=" + codigo + ", fecha_inicial=" + fecha_inicial + ", fecha_final=" + fecha_final + ", cedula_cliente=" + cedula_cliente + ", tipo=" + tipo + ", notas_problema=" + notas_problema + ", notas_solucion=" + notas_solucion + ", estado=" + estado + ", calidad_servicio=" + calidad_servicio + '}';
+    }
+    
+    
 }

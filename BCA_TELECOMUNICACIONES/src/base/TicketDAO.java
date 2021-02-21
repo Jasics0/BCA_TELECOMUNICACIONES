@@ -10,7 +10,7 @@ public class TicketDAO extends Database{
     
     public void insertarTicket(Ticket ticket){
         SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd");
-        insertar("INSERT INTO Tickets VALUES('"+ticket.getCodigo()+"','"+df.format(ticket.getFecha_inicial())+"','"+df.format(ticket.getFecha_final())+"','"+ticket.getCedula_cliente()+"','"+ticket.getTipo()+"','"+ticket.getNotas_problema()+"','"+ticket.getNotas_solucion()+"',"+1+","+ticket.getCalidad_servicio()+");");
+        insertar("INSERT INTO Tickets VALUES('"+ticket.getCodigo()+"','"+df.format(ticket.getFecha_inicial())+"',null,'"+ticket.getCedula_cliente()+"','"+ticket.getTipo()+"','"+ticket.getNotas_problema()+"','"+ticket.getNotas_solucion()+"',"+1+","+ticket.getCalidad_servicio()+");");
     }
 
     
