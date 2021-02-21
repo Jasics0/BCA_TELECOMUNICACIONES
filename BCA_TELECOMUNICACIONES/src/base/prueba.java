@@ -25,7 +25,8 @@ public class prueba {
         }
         ResultSet rs=xd.consulta("SELECT * FROM sql10393822.Clientes;");
         while (rs.next()) {
-            System.out.println(rs.getString(1));
+            System.out.print("Cedula: "+rs.getString(1)+" ");
+            System.out.println("Nombre: "+rs.getString(2));
         }
     }
 
