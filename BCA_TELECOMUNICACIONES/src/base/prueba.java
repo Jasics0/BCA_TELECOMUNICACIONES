@@ -5,20 +5,28 @@
  */
 package base;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author henry
  */
 public class prueba {
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Conexion xd = new Conexion();
-        if (xd.obtener() != null) {
+        Database xd = new Database();
+        if (xd != null) {
             System.out.println("SI sirve xdxd");
         } else {
-            System.out.println("Sutri djjdsj");}
-        
+            System.out.println("Sutri djjdsj");
+        }
+        ResultSet rs=xd.consulta("SELECT * FROM sql10393822.Clientes;");
+        while (rs.next()) {
+            System.out.println(rs.getString(1));
+        }
     }
-    
+
 }
