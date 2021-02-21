@@ -51,7 +51,7 @@ public class ticketsActivos extends javax.swing.JFrame {
                 dato[4] = rs.getString(8);
                 model.addRow(dato);
             }
-            
+            to.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }   

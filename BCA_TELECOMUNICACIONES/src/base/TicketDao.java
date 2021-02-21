@@ -18,6 +18,12 @@ public class TicketDAO extends Database{
         return consulta("SELECT * FROM Tickets WHERE(codigo_ticket='" + codigo + "');");
     }
 
+
+    public void editarTicket(String codigo, Ticket ticket){
+        int estado=(ticket.getEstado()) ?1 :0;
+        insertar("UPDATE Tickets SET (fecha_inicial='"+ticket.getFecha_inicial()+"',fecha_final='"+ticket.getFecha_final()+"',cedula_cliente='"+ticket.getCedula_cliente()+"',tipo='"+ticket.getTipo()+"',notas_problema='"+ticket.getNotas_problema()+"', notas_solucion='"+ticket.getNotas_solucion()+"',estado="+estado+", calidad_servicio="+ticket.getCalidad_servicio()+") WHERE(codigo_ticket='"+codigo+"');");
+    }
+
     public ResultSet consultarTickets() {
         return consulta("SELECT * FROM Tickets;");
     }
