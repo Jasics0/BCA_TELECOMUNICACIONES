@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "c:\\Users\\javie\\OneDrive\\Documentos\\GitHub\\BCA_TELECOMUNICACIONES\\Libraries\\mysql-connector-java-8.0.22.jar"
+        "c:\\Users\\javie\\OneDrive\\Documentos\\GitHub\\BCA_TELECOMUNICACIONES\\Libraries\\mysql-connector-java-8.0.22.jar",
+        "c:\\Users\\javie\\OneDrive\\Documentos\\GitHub\\BCA_TELECOMUNICACIONES\\Libraries\\jcalendar-1.3.3.jar"
     ]
 }

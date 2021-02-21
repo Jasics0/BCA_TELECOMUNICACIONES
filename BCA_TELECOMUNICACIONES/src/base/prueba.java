@@ -10,6 +10,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.xml.crypto.Data;
+
 import entidades.Cliente;
 import entidades.Ticket;
 
@@ -20,12 +22,13 @@ import entidades.Ticket;
 public class prueba {
 
     public static void main(String[] args) {
-
-        ClienteDAO co = new ClienteDAO();
-
-        Cliente j= new Cliente("160004108","python");
-
-        co.editarCliente("1006858333", j);
-    }
+        ClienteDAO cdb = new ClienteDAO();
+        try {
+            System.out.println(cdb.numeroClientes());
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+  }
 
 }

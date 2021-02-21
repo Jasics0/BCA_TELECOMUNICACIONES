@@ -28,8 +28,7 @@ public class Database {
     private static void conexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com/sql10393822", "sql10393822",
-                    "Tu6iB9qjQb");
+            con = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10393822?user=sql10393822&password=Tu6iB9qjQb&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&maxReconnects=10");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
