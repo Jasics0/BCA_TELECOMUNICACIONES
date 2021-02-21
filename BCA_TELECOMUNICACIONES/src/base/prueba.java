@@ -22,9 +22,8 @@ public class prueba {
 
         ClienteDAO c= new ClienteDAO();
 
-        c.insertarCliente(jaja);
 
-        ResultSet cliente_consulta= c.consultarClientes(jaja);
+        ResultSet cliente_consulta= c.consultarClientes(jaja.getCedula());
         cliente_consulta.next();
         System.out.println("Se encontró este gai:"+cliente_consulta.getString(2));
         cliente_consulta= c.consultarClientes();

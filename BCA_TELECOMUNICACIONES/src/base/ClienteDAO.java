@@ -10,8 +10,8 @@ public class ClienteDAO extends Database{
         insertar("INSERT INTO Clientes VALUES('"+cedula+"','"+cliente.getNombre()+"');");
     }
 
-    public ResultSet consultarClientes(Cliente cliente){
-        return consulta("SELECT * FROM Clientes WHERE(cedula='"+cliente.getCedula()+"');");
+    public ResultSet consultarClientes(String cedula){
+        return consulta("SELECT * FROM Clientes WHERE(cedula='"+cedula+"');");
     }
 
     public ResultSet consultarClientes(){
