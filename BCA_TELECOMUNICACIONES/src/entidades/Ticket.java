@@ -9,19 +9,19 @@ public class Ticket {
     private String cedula_cliente;
     private String tipo;
     private String notas_problema;
-    private String notas_solucin;
+    private String notas_solucion;
     private boolean estado;
     private int calidad_servicio;
 
 
-    public Ticket(String codigo, Date fecha_inicial, Date fecha_final, String cedula_cliente, String tipo, String notas_problema, String notas_solucin, boolean estado, int calidad_servicio) {
+    public Ticket(String codigo, Date fecha_inicial, Date fecha_final, String cedula_cliente, String tipo, String notas_problema, String notas_solucion, boolean estado, int calidad_servicio) {
         this.codigo = codigo;
         this.fecha_inicial = fecha_inicial;
         this.fecha_final = fecha_final;
         this.cedula_cliente = cedula_cliente;
         this.tipo = tipo;
         this.notas_problema = notas_problema;
-        this.notas_solucin = notas_solucin;
+        this.notas_solucion = notas_solucion;
         this.estado = estado;
         this.calidad_servicio = calidad_servicio;
     }
@@ -75,12 +75,12 @@ public class Ticket {
         this.notas_problema = notas_problema;
     }
 
-    public String getNotas_solucin() {
-        return this.notas_solucin;
+    public String getNotas_solucion() {
+        return this.notas_solucion;
     }
 
-    public void setNotas_solucin(String notas_solucin) {
-        this.notas_solucin = notas_solucin;
+    public void setNotas_solucion(String notas_solucion) {
+        this.notas_solucion = notas_solucion;
     }
 
     public boolean isEstado() {

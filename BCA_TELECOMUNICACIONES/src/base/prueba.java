@@ -5,10 +5,9 @@
  */
 package base;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import entidades.Cliente;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -16,21 +15,12 @@ import entidades.Cliente;
  */
 public class prueba {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) {
+        
+        Date prueba= new Date(121,0,1);
+        SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(df.format(prueba));
 
-        Cliente jaja= new Cliente("123","Yasbleidy");
-
-        ClienteDAO c= new ClienteDAO();
-
-
-        ResultSet cliente_consulta= c.consultarClientes(jaja.getCedula());
-        cliente_consulta.next();
-        System.out.println("Se encontró este gai:"+cliente_consulta.getString(2));
-        cliente_consulta= c.consultarClientes();
-        System.out.println("CLIENTES EN LA TABLA: ");
-        while(cliente_consulta.next()){
-            System.out.println("Cedula: "+cliente_consulta.getString(1)+" Nombre: "+cliente_consulta.getString(2));
-        }
     }
 
 }
