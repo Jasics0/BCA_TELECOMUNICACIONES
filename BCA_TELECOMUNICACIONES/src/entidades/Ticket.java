@@ -1,6 +1,9 @@
 package entidades;
 
+import java.sql.SQLException;
 import java.util.Date;
+
+import base.TicketDAO;
 
 public class Ticket {
     private String codigo;
@@ -13,9 +16,9 @@ public class Ticket {
     private boolean estado;
     private int calidad_servicio;
 
-
-    public Ticket(String codigo, Date fecha_inicial, Date fecha_final, String cedula_cliente, String tipo, String notas_problema, String notas_solucion, boolean estado, int calidad_servicio) {
-        this.codigo = codigo;
+    public Ticket(Date fecha_inicial, Date fecha_final, String cedula_cliente, String tipo, String notas_problema,
+            String notas_solucion, boolean estado, int calidad_servicio) throws SQLException {
+        this.codigo = "T"+new TicketDAO().numeroTickets();
         this.fecha_inicial = fecha_inicial;
         this.fecha_final = fecha_final;
         this.cedula_cliente = cedula_cliente;
