@@ -27,7 +27,7 @@ public class TicketDAO extends Database {
     }
 
     public void editarTicket(String codigo, Ticket ticket) {
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         int estado = (ticket.getEstado()) ? 1 : 0;
         insertar("UPDATE Tickets SET fecha_inicial='" + df.format(ticket.getFecha_inicial()) + "',fecha_final='"
                 + df.format(ticket.getFecha_final()) + "',cedula_cliente='" + ticket.getCedula_cliente() + "',tipo='"

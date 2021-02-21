@@ -49,7 +49,7 @@ public class insertarTicket extends javax.swing.JFrame {
 
         jLabel2.setText("Cedula: ");
 
-        jLabel3.setText("Fecha de entrada:");
+        jLabel3.setText("Fecha inicial:");
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

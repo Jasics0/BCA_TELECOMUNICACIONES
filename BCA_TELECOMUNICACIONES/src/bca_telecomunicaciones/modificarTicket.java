@@ -228,10 +228,9 @@ public class modificarTicket extends javax.swing.JFrame {
         TicketDAO tdao = new TicketDAO();
         try {
             t = tdao.consultarTickets(jTextField1.getText());
-            System.out.println("Ya consulto");
             jDateChooser2.setDate(t.getFecha_inicial());
             jDateChooser1.setDate(t.getFecha_final());
-            if (t.getNotas_solucion().equals("null") || t.getNotas_solucion() == null) {
+            if ( t.getNotas_solucion() == null) {
                 jTextField2.setText("No tiene notas de solucion.");
             } else {
                 jTextField2.setText(t.getNotas_solucion());
@@ -240,9 +239,9 @@ public class modificarTicket extends javax.swing.JFrame {
             String infodb = "";
 
             for (int i = 0; i < 19; i++) {
-                infodb = "" + jComboBox4.getItemAt(i).charAt(0) + jComboBox4.getItemAt(i).charAt(1);
+                infodb = "" + jComboBox4.getItemAt(i).toString().charAt(0) + jComboBox4.getItemAt(i).toString().charAt(1);
                 if ((infodb).equals(t.getTipo())) {
-                    jComboBox4.setSelectedItem(jComboBox4.getItemAt(i));
+                    jComboBox4.setSelectedItem(jComboBox4.getItemAt(i).toString());
                     break;
                 }
             }
