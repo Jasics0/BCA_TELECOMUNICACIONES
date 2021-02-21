@@ -29,7 +29,7 @@ public class TicketDAO extends Database{
     }
 
     public ResultSet consultarTicketsActivos() {
-        return consulta("SELECT * FROM Tickets WHERE(estado=1);");
+        return consulta("SELECT codigo_ticket,cedula_cliente,fecha_inicial,tipo,estado FROM Tickets WHERE(estado=1);");
     }
 
 
