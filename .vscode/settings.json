@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "Libraries/jcalendar-1.3.3.jar",
+        "Libraries/mysql-connector-java-8.0.22.jar"
+    ]
+}
