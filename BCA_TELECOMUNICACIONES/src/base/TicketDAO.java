@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 import entidades.Ticket;
+
+import java.util.Date;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
@@ -14,8 +16,7 @@ public class TicketDAO extends Database {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         insertar("INSERT INTO Tickets VALUES('" + ticket.getCodigo() + "','" + df.format(ticket.getFecha_inicial())
                 + "',null,'" + ticket.getCedula_cliente() + "','" + ticket.getTipo() + "','"
-                + ticket.getNotas_problema() + "',null," + 1 + ","
-                + ticket.getCalidad_servicio() + ");");
+                + ticket.getNotas_problema() + "',null," + 1 + "," + ticket.getCalidad_servicio() + ");");
     }
 
     public Ticket consultarTickets(String codigo) throws SQLException {
@@ -50,6 +51,23 @@ public class TicketDAO extends Database {
 
     public ResultSet consultarTicketsActivos() {
         return consulta("SELECT codigo_ticket,cedula_cliente,fecha_inicial,tipo,estado FROM Tickets WHERE(estado=1);");
+    }
+
+    public int contarTicketsEntreFechas(String tipo, Date fecha_inicial, Date fecha_final) throws SQLException {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        ResultSet num = consulta(
+                "SELECT COUNT(codigo_ticket) FROM Tickets WHERE tipo ='" + tipo + "'" + " AND fecha_inicial BETWEEN '"
+                        + df.format(fecha_inicial) + "' AND '" + df.format(fecha_final) + "';");
+        num.next();
+        return num.getInt(1);
+    }
+
+    public int contarTicketsEntreFechas(Date fecha_inicial,Date fecha_final) throws SQLException {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        ResultSet num = consulta("SELECT COUNT(codigo_ticket) FROM Tickets WHERE  fecha_inicial BETWEEN '"
+                + df.format(fecha_inicial) + "' AND '" + df.format(fecha_final) + "';");
+        num.next();
+        return num.getInt(1);
     }
 
     public int numeroTickets() throws SQLException {
