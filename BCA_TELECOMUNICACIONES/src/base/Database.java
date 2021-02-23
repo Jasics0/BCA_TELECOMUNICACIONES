@@ -5,6 +5,7 @@
  */
 package base;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,7 +30,7 @@ public class Database {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10393822?user=sql10393822&password=Tu6iB9qjQb&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&maxReconnects=10");
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
     }
@@ -39,8 +40,9 @@ public class Database {
         try {
             PreparedStatement ps = con.prepareStatement(Consulta);
             rs = ps.executeQuery();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: No se encontraron los datos solicitados.");
         }
         return rs;
     }
@@ -49,15 +51,15 @@ public class Database {
         try {
             Statement ps = con.createStatement();
             ps.executeUpdate(Consulta);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente.");
+
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Revisa los datos ingresados e intenta nuevamente.");
         }
     }
 
     public void cerrarConexion() throws SQLException {
         con.close();
     }
-
-    
 
 }

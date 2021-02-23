@@ -5,6 +5,7 @@ import entidades.Ticket;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class insertarTicket extends javax.swing.JFrame {
 
@@ -15,7 +16,7 @@ public class insertarTicket extends javax.swing.JFrame {
         this.setResizable(false);
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
     }
 
     /**
@@ -160,8 +161,13 @@ public class insertarTicket extends javax.swing.JFrame {
             String tipoo = String.valueOf(jComboBox2.getSelectedItem()).charAt(0) + "" + String.valueOf(jComboBox2.getSelectedItem()).charAt(1);
             Ticket t = new Ticket(jDateChooser1.getDate(), null, jTextField2.getText(), tipoo, jTextField3.getText(), null, true, 0);
             tdao.insertarTicket(t);
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jDateChooser1.setDate(null);
+            jComboBox2.setSelectedIndex(0);
         } catch (SQLException ex) {
-            Logger.getLogger(insertarTicket.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(insertarTicket.class.getName()).log(Level.SEVERE, null, "ERROR, REVISA QUE LOS DATOS INGRESADOS SEAN CORRECTOS.");
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

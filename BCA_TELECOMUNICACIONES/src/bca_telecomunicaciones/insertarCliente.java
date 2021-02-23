@@ -126,7 +126,9 @@ public class insertarCliente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Cliente c = new Cliente(jTextField1.getText(), jTextField2.getText());
         ClienteDAO cdao = new ClienteDAO();
-        cdao.insertarCliente(c);
+        cdao.insertarCliente(c);     
+        jTextField1.setText("");
+        jTextField2.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

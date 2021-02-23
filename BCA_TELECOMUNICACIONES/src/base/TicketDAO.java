@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 import entidades.Ticket;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class TicketDAO extends Database {
 
@@ -20,10 +22,15 @@ public class TicketDAO extends Database {
 
         ResultSet rs = consulta("SELECT * FROM Tickets WHERE(codigo_ticket='" + codigo + "');");
         rs.next();
-        Ticket t = new Ticket(rs.getDate(2), rs.getDate(3), rs.getString(4), rs.getString(5), rs.getString(6),
-                rs.getString(7), rs.getBoolean(8), rs.getInt(9));
-        t.setCodigo(rs.getString(1));
-        return t;
+        try {
+            Ticket t = new Ticket(rs.getDate(2), rs.getDate(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                    rs.getString(7), rs.getBoolean(8), rs.getInt(9));
+            t.setCodigo(rs.getString(1));
+            return t;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: No se encontraron los datos solicitados.");
+            return null;
+        }
     }
 
     public void editarTicket(String codigo, Ticket ticket) {
@@ -34,6 +41,7 @@ public class TicketDAO extends Database {
                 + ticket.getTipo() + "',notas_problema='" + ticket.getNotas_problema() + "', notas_solucion='"
                 + ticket.getNotas_solucion() + "',estado=" + estado + ", calidad_servicio="
                 + ticket.getCalidad_servicio() + " WHERE(codigo_ticket='" + codigo + "');");
+
     }
 
     public ResultSet consultarTickets() {

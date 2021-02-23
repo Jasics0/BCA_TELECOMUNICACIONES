@@ -24,6 +24,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         this.setResizable(false);
+        this.setTitle("SISTEMA DE TICKETS BCA TELECOMUNICACIONES");
         //jLabel3.setIcon(new ImageIcon(ruta));
         initComponents();
     }
@@ -189,7 +190,7 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
