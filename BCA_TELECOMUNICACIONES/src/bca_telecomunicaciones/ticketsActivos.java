@@ -230,6 +230,7 @@ public class ticketsActivos extends javax.swing.JFrame {
                 jLabel3.setText(
                         tdao.contarTicketsEntreFechas(tipo, jDateChooser1.getDate(), jDateChooser2.getDate()) + "");
             }
+            tdao.cerrarConexion();
         } else {
             JOptionPane.showMessageDialog(null, "Error: Debe ingresar las dos fechas.");
         }

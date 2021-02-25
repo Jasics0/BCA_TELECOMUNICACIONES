@@ -12,16 +12,30 @@ import javax.swing.JOptionPane;
 
 public class TicketDAO extends Database {
 
-    public void insertarTicket(Ticket ticket) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        insertar("INSERT INTO Tickets VALUES('" + ticket.getCodigo() + "','" + df.format(ticket.getFecha_inicial())
-                + "',null,'" + ticket.getCedula_cliente() + "','" + ticket.getTipo() + "','"
-                + ticket.getNotas_problema() + "',null," + 1 + "," + ticket.getCalidad_servicio() + ");");
+    private boolean verificarTicketsActivos(String cedula) throws SQLException {
+        ResultSet num = consulta(
+                "SELECT COUNT(codigo_ticket) FROM Tickets WHERE cedula_cliente='" + cedula + "' AND estado=1;");
+        num.next();
+        if (num.getInt(1) >= 1)
+            return false;
+        else
+            return true;
     }
 
-    public Ticket consultarTickets(String codigo) throws SQLException {
+    public void insertarTicket(Ticket ticket) throws SQLException {
+        if (verificarTicketsActivos(ticket.getCedula_cliente())) {
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            insertar("INSERT INTO Tickets VALUES('" + ticket.getCodigo() + "','" + df.format(ticket.getFecha_inicial())
+                    + "',null,'" + ticket.getCedula_cliente() + "','" + ticket.getTipo() + "','"
+                    + ticket.getNotas_problema() + "',null," + 1 + "," + ticket.getCalidad_servicio() + ");");
+        } else{
+            JOptionPane.showMessageDialog(null, "Ya hay un ticket activo de este cliente. Solucione primero el que tiene para poder crear uno nuevo.");
+        }
+    }
 
-        ResultSet rs = consulta("SELECT * FROM Tickets WHERE(codigo_ticket='" + codigo + "');");
+    public Ticket consultarTickets(String cedula) throws SQLException {
+
+        ResultSet rs = consulta("SELECT * FROM Tickets WHERE cedula_cliente='" + cedula + "' AND estado=1;");
         rs.next();
         try {
             Ticket t = new Ticket(rs.getDate(2), rs.getDate(3), rs.getString(4), rs.getString(5), rs.getString(6),
@@ -37,11 +51,18 @@ public class TicketDAO extends Database {
     public void editarTicket(String codigo, Ticket ticket) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         int estado = (ticket.getEstado()) ? 1 : 0;
-        insertar("UPDATE Tickets SET fecha_inicial='" + df.format(ticket.getFecha_inicial()) + "',fecha_final='"
-                + df.format(ticket.getFecha_final()) + "',cedula_cliente='" + ticket.getCedula_cliente() + "',tipo='"
-                + ticket.getTipo() + "',notas_problema='" + ticket.getNotas_problema() + "', notas_solucion='"
-                + ticket.getNotas_solucion() + "',estado=" + estado + ", calidad_servicio="
-                + ticket.getCalidad_servicio() + " WHERE(codigo_ticket='" + codigo + "');");
+        if (ticket.getFecha_final() != null)
+            insertar("UPDATE Tickets SET fecha_inicial='" + df.format(ticket.getFecha_inicial()) + "',fecha_final='"
+                    + df.format(ticket.getFecha_final()) + "',cedula_cliente='" + ticket.getCedula_cliente()
+                    + "',tipo='" + ticket.getTipo() + "',notas_problema='" + ticket.getNotas_problema()
+                    + "', notas_solucion='" + ticket.getNotas_solucion() + "',estado=" + estado + ", calidad_servicio="
+                    + ticket.getCalidad_servicio() + " WHERE(codigo_ticket='" + codigo + "');");
+        else
+            insertar("UPDATE Tickets SET fecha_inicial='" + df.format(ticket.getFecha_inicial())
+                    + "',fecha_final=null,cedula_cliente='" + ticket.getCedula_cliente() + "',tipo='" + ticket.getTipo()
+                    + "',notas_problema='" + ticket.getNotas_problema() + "', notas_solucion='"
+                    + ticket.getNotas_solucion() + "',estado=" + estado + ", calidad_servicio="
+                    + ticket.getCalidad_servicio() + " WHERE(codigo_ticket='" + codigo + "');");
 
     }
 
@@ -62,7 +83,7 @@ public class TicketDAO extends Database {
         return num.getInt(1);
     }
 
-    public int contarTicketsEntreFechas(Date fecha_inicial,Date fecha_final) throws SQLException {
+    public int contarTicketsEntreFechas(Date fecha_inicial, Date fecha_final) throws SQLException {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         ResultSet num = consulta("SELECT COUNT(codigo_ticket) FROM Tickets WHERE  fecha_inicial BETWEEN '"
                 + df.format(fecha_inicial) + "' AND '" + df.format(fecha_final) + "';");

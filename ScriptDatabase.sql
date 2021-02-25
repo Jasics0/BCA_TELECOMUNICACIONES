@@ -1,3 +1,3 @@
-USE sql10393822;
+USE olO2PsJ315;
 CREATE TABLE Clientes (cedula varchar(50) PRIMARY KEY NOT NULL, nombre varchar(50) NOT NULL);
 CREATE TABLE Tickets(codigo_ticket varchar(50) primary key not null,fecha_inicial date not null, fecha_final date, cedula_cliente varchar(50) NOT NULL, tipo varchar(2) NOT NULL, notas_problema varchar(500), notas_solucion varchar(500), estado boolean, calidad_servicio int, foreign key (cedula_cliente) references Clientes(cedula));
