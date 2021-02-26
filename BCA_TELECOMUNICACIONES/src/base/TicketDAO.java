@@ -35,7 +35,7 @@ public class TicketDAO extends Database {
 
     public Ticket consultarTickets(String cedula) throws SQLException {
 
-        ResultSet rs = consulta("SELECT * FROM Tickets WHERE cedula_cliente='" + cedula + "' AND estado=1;");
+        ResultSet rs = consulta("SELECT * FROM Tickets WHERE cedula_cliente='" + cedula + "' ORDER BY codigo_ticket DESC;");
         rs.next();
         try {
             Ticket t = new Ticket(rs.getDate(2), rs.getDate(3), rs.getString(4), rs.getString(5), rs.getString(6),
