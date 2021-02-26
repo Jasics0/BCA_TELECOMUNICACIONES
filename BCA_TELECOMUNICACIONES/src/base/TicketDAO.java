@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import entidades.Ticket;
 
 import java.util.Date;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class TicketDAO extends Database {
