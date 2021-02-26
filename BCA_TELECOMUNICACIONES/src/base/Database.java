@@ -30,7 +30,6 @@ public class Database {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://bswikqc7uizozxoxxsj1-mysql.services.clever-cloud.com:3306/bswikqc7uizozxoxxsj1?user=uojiler96szbrk3r&password=eONTL4V7iqHdz9xblwEg&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&maxReconnects=10");
-            System.out.println("siuu");
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
@@ -61,10 +60,6 @@ public class Database {
 
     public void cerrarConexion() throws SQLException {
         con.close();
-    }
-
-    public static void main(String[] args) {
-        Database db= new Database();
     }
 
 }
