@@ -29,7 +29,7 @@ public class Database {
     private static void conexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://bswikqc7uizozxoxxsj1-mysql.services.clever-cloud.com:3306/bswikqc7uizozxoxxsj1?user=uojiler96szbrk3r&password=eONTL4V7iqHdz9xblwEg&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&maxReconnects=10");
+            con = DriverManager.getConnection("jdbc:mysql://31.170.167.52:3306/u474345008_BCA?user=u474345008_adminbca&password=Gestionbca2021*&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&maxReconnects=10");
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
@@ -54,6 +54,7 @@ public class Database {
             JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente.");
 
         } catch (HeadlessException | SQLException ex) {
+            System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Error: Revisa los datos ingresados e intenta nuevamente.");
         }
     }
